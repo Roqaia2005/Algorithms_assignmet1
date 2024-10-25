@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 // implement sequential search 
@@ -8,8 +9,10 @@ using namespace std;
 // implement binary search 
 int arr[5];
 
+
 int binarySearch(int arr[], int low, int high, int target)
 {
+
     while (low <= high) {
         int mid = low + (high - low) / 2;
 
@@ -33,6 +36,11 @@ int binarySearch(int arr[], int low, int high, int target)
 // test your function in main 
 
 int main(){
+   
+
+    int arr[5]={1,2,3,4,5};
+
+    binarySearch(arr, 0, 4, 5);
 
     return 0;
 }
