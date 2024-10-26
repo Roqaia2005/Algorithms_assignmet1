@@ -98,18 +98,10 @@ int RecursiveBinarySearch(int arr[], int low, int high, int value)
 }
 
 // test your function in main
-<<<<<<< HEAD
 
-int main()
-{
 
-    int arr[5] = {1, 2, 3, 4, 5};
-    int key;
-    cout << "enter element you search for " << endl;
-    cin >> key;
-    cout << binarySearch(arr, 0, 4, key) << endl;
-    cout << RBsearch(arr, 0, 4, key) << endl;
-=======
+
+
 int main() {
     int arr[5] = {1, 2, 3, 4, 5};
     int key;
@@ -128,7 +120,8 @@ int main() {
 
     // Test Recursive Binary Search
     cout << "Recursive Binary Search Result: " << RBsearch(arr, 0, 4, key) << endl;
-
->>>>>>> 17bfb569e2d3956a0ac01a4c45b6524509267dd2
     return 0;
+
 }
+    
+
