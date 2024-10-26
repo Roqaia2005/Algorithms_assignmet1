@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Heap
@@ -53,7 +54,7 @@ void heapsort(vector<int> &v)
 {
     int n = v.size();
     BuildMaxHeap(v);
-    for (int i = n - 1; i >= 1; --i)
+    for (int i = n-1; i >= 1; --i)
     {
         swap(v[0], v[i]);
         heapify(v, i, 0);
