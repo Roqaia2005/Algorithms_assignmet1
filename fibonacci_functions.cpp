@@ -81,28 +81,6 @@ ll fibonacci_matrix(ll n)
 // implement fibonacci function using dynamic programming
 
 // write function here
-int fib_dp(int n)
-{
-    if (n == 0)
-    {
-        return 0;
-    }
-    else if (n == 1)
-    {
-        return 1;
-    }
-    else
-    {
-        int arr[n];
-        arr[0] = 0;
-        arr[1] = 1;
-        for (int i = 2; i < n; ++i)
-        {
-            arr[i] = arr[i - 1] + arr[i - 2];
-        }
-        return arr[n - 1];
-    }
-}
 
 // test your function in main ,good luck fatima and nada :-)
 
