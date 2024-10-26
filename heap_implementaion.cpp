@@ -76,7 +76,7 @@ public:
         for (int val : heap) {
             cout << val << " ";
         }
-        cout << std::endl;
+        cout << endl;
     }
 };
 
