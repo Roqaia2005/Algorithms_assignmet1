@@ -80,9 +80,27 @@ ll fibonacci_matrix(ll n)
 
 // implement fibonacci function using dynamic programming
 
-// write function here
+int fib_dp(int n){
+    if (n == 0) {
+        return 0;
+    }
+    else if (n == 1) {
+        return 1;
+    }
+    else {
+        int arr[n];
+        arr[0] = 0;
+        arr[1] = 1;
+        for (int i = 2; i < n; ++i) {
+            arr[i] = arr[i-1]+arr[i-2];
+        }
+        return arr[n-1];
+    }
 
-// test your function in main ,good luck fatima and nada :-)
+}
+
+
+// test your function in main 
 
 int main()
 {
@@ -94,6 +112,7 @@ int main()
     cout << "Recursive Fibonacci: " << Fib(n) << endl;
     // Test Multiplication Fibonacci
     cout << "Matrix Multiplication Fibonacci: " << fibonacci_matrix(n) << endl;
+    cout << "Dynamic programming Fibonacci "<< fib_dp(n) << endl;
 
     return 0;
 }

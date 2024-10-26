@@ -1,14 +1,6 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
-
-
-    // member 1 ->
-    //  Implement methods for inserting an element and maintaining the heap property
-    // (heapify).
-    // Implement methods to extract the maximum and minimum from the heap.
-
 class Heap {
 private:
     vector<int> heap;
@@ -75,15 +67,25 @@ public:
         cout << endl;
     }
 };
-// member 2 ->
-// Use the heap implementation (from step 1) to build a priority queue.
-// Define methods for inserting an element with a priority and extracting the highest priority element.
-// Ensure the insertion maintains the heap property.
+class PriorityQueue {
+private:
+    Heap heap;
 
-// member 3 -> //Implement Heap Sort:
-//  Utilize your heap implementation to sort an array.
-// Build a max heap from the array and repeatedly extract the max element from the
-// heap and rebuild it until the array is sorted.
+public:
+    // Insert with priority
+    void insertWithPriority(int value) {
+        heap.insert(value);
+    }
+
+    // Extract the element with the highest priority (max in this case)
+    int extractHighestPriority() {
+        return heap.extractMax();
+    }
+
+   
+};
+
+
 
 void heapify(vector<int> &v, int n, int i)
 {
@@ -126,6 +128,13 @@ void heapsort(vector<int> &v)
 }
 int main() {
     Heap heap;
+    PriorityQueue pq;
+    pq.insertWithPriority(20);
+    pq.insertWithPriority(30);
+    pq.insertWithPriority(40);
+    pq.insertWithPriority(50);
+
+    cout<<pq.extractHighestPriority()<<endl;
 
     heap.insert(10);
     heap.insert(20);
@@ -140,7 +149,7 @@ int main() {
    cout << "Heap after extracting max: ";
     heap.display();
 
-  cout << "Minimum element in the heap: " << heap.extractMin() << sendl;
+  cout << "Minimum element in the heap: " << heap.extractMin() << endl;
 
     return 0;
 }
