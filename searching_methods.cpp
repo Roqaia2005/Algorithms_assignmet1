@@ -4,24 +4,7 @@ using namespace std;
 
 // implement sequential search
 
-// implement recursive sequential search---------->//Done
-
-  int RBsearch(int arr[], int low,int high,int key){
-    if (low > high) {
-        return -1; // Not found
-    }
-      else
-      {
-          int mid =(low+high)/2;
-          if(key==arr[mid])
-              return mid;
-          if(key<arr[mid])
-              return RBsearch(arr,low,mid-1,key);
-          else
-              return RBsearch(arr,mid+1,high,key);
-      }
-
-  }
+// implement recursive sequential search
 
 // implement binary search
 int arr[5];
@@ -48,7 +31,24 @@ int binarySearch(int arr[], int low, int high, int target)
     return -1;
 }
 
-// implement recursive binary search
+// implement recursive binary search --------->Done
+ int RBsearch(int arr[], int low,int high,int key){
+    if (low > high) {
+        return -1; // Not found
+    }
+      else
+      {
+          int mid =(low+high)/2;
+          if(key==arr[mid])
+              return mid;
+          if(key<arr[mid])
+              return RBsearch(arr,low,mid-1,key);
+          else
+              return RBsearch(arr,mid+1,high,key);
+      }
+
+  }
+
 
 // test your function in main
 
