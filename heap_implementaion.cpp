@@ -139,14 +139,14 @@ int main() {
     heap.insert(30);
     heap.insert(40);
 
-    std::cout << "Heap elements: ";
+  cout << "Heap elements: ";
     heap.display();
 
-    std::cout << "Extracted Max: " << heap.extractMax() << std::endl;
-    std::cout << "Heap after extracting max: ";
+   cout << "Extracted Max: " << heap.extractMax() << endl;
+   cout << "Heap after extracting max: ";
     heap.display();
 
-    std::cout << "Minimum element in the heap: " << heap.extractMin() << std::endl;
+  cout << "Minimum element in the heap: " << heap.extractMin() << sendl;
 
     return 0;
 }
