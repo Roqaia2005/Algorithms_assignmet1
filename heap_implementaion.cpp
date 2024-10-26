@@ -2,14 +2,84 @@
 #include <vector>
 using namespace std;
 
-class Heap
-{
+
 
     // member 1 ->
     //  Implement methods for inserting an element and maintaining the heap property
     // (heapify).
     // Implement methods to extract the maximum and minimum from the heap.
+
+class Heap {
+private:
+    vector<int> heap;
+
+    //  method to keep the heap property for a max heap (heapify down)
+    void maxHeapify(int index) {
+        int largest = index;
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
+
+        if (left < heap.size() && heap[left] > heap[largest])
+            largest = left;
+
+        if (right < heap.size() && heap[right] > heap[largest])
+            largest = right;
+
+        if (largest != index) {
+            swap(heap[index], heap[largest]);
+            maxHeapify(largest);
+        }
+    }
+
+    //  method to keep  the heap property while inserting (heapify up)
+    void heapifyUp(int index) {
+        if (index && heap[(index - 1) / 2] < heap[index]) {
+            swap(heap[index], heap[(index - 1) / 2]);
+            heapifyUp((index - 1) / 2);
+        }
+    }
+
+public:
+    // Insert a new element into the heap
+    void insert(int element) {
+        heap.push_back(element);
+        heapifyUp(heap.size() - 1);
+    }
+
+    // Extract the maximum element from the max heap
+    int extractMax() {
+        if (heap.empty()) {
+           cout<<"Heap is empty";
+        }
+        int maxElement = heap[0];
+        heap[0] = heap.back();
+        heap.pop_back();
+        maxHeapify(0);
+        return maxElement;
+    }
+
+    // Extract the minimum element from the max heap
+    int extractMin() {
+        if (heap.empty()) {
+            cout<<"Heap is empty";
+        }
+        int minElement = heap[0];
+        for (int i = 1; i < heap.size(); i++) {
+            if (heap[i] < minElement)
+                minElement = heap[i];
+        }
+        return minElement;
+    }
+
+    // Display the heap elements
+    void display() {
+        for (int val : heap) {
+            cout << val << " ";
+        }
+        cout << std::endl;
+    }
 };
+
 
 // member 2 ->
 // Use the heap implementation (from step 1) to build a priority queue.
@@ -60,9 +130,23 @@ void heapsort(vector<int> &v)
         heapify(v, i, 0);
     }
 }
+int main() {
+    Heap heap;
 
-int main()
-{
+    heap.insert(10);
+    heap.insert(20);
+    heap.insert(15);
+    heap.insert(30);
+    heap.insert(40);
+
+    std::cout << "Heap elements: ";
+    heap.display();
+
+    std::cout << "Extracted Max: " << heap.extractMax() << std::endl;
+    std::cout << "Heap after extracting max: ";
+    heap.display();
+
+    std::cout << "Minimum element in the heap: " << heap.extractMin() << std::endl;
 
     return 0;
 }
