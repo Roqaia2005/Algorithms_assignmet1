@@ -4,7 +4,12 @@ using namespace std;
 
 // implement fibonacci function using recursion 
 
-// write function here 
+int Fib(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    return Fib(n - 1) + Fib(n - 2);
+}
 
 
 // implement fibonacci function using divide and conquer (martix multiplication)
@@ -87,8 +92,11 @@ int main(){
 
     ll n;
     cin>>n;
-
-    cout<<fibonacci_matrix(n);
+ 
+    // Test recursive Fibonacci
+    cout <<  "Recursive Fibonacci: " << Fib(n) << endl;
+   // Test Multiplication Fibonacci
+    cout<< "Matrix Multiplication Fibonacci: " << fibonacci_matrix(n) << endl;
 
     return 0;
 }
