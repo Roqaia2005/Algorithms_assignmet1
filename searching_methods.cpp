@@ -48,24 +48,8 @@ int binarySearch(int arr[], int low, int high, int target)
     return -1;
 }
 
-// implement recursive binary search --------->Done
-int RBsearch(int arr[], int low, int high, int key)
-{
-    if (low > high)
-    {
-        return -1; // Not found
-    }
-    else
-    {
-        int mid = (low + high) / 2;
-        if (key == arr[mid])
-            return mid;
-        if (key < arr[mid])
-            return RBsearch(arr, low, mid - 1, key);
-        else
-            return RBsearch(arr, mid + 1, high, key);
-    }
-}
+// implement recursive binary search 
+
 int RecursiveBinarySearch(int arr[], int low, int high, int value)
 {
     if (low == high)
@@ -102,6 +86,8 @@ int RecursiveBinarySearch(int arr[], int low, int high, int value)
 
 
 
+
+
 int main() {
     int arr[5] = {1, 2, 3, 4, 5};
     int key;
@@ -119,7 +105,11 @@ int main() {
     cout << "Binary Search Result: " << binarySearch(arr, 0, 4, key) << endl;
 
     // Test Recursive Binary Search
-    cout << "Recursive Binary Search Result: " << RBsearch(arr, 0, 4, key) << endl;
+
+    cout << "Recursive Binary Search Result: " << recursiveSequentialSearch(arr, 0, 4, key) << endl;
+
+    cout << "Recursive Binary Search Result: " <<  RecursiveBinarySearch(arr, 0, 4, key) << endl;
+
     return 0;
 
 }
