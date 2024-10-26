@@ -13,7 +13,6 @@ class Heap {
 private:
     vector<int> heap;
 
-    //  method to keep the heap property for a max heap (heapify down)
     void maxHeapify(int index) {
         int largest = index;
         int left = 2 * index + 1;
@@ -31,7 +30,6 @@ private:
         }
     }
 
-    //  method to keep  the heap property while inserting (heapify up)
     void heapifyUp(int index) {
         if (index && heap[(index - 1) / 2] < heap[index]) {
             swap(heap[index], heap[(index - 1) / 2]);
@@ -40,16 +38,15 @@ private:
     }
 
 public:
-    // Insert a new element into the heap
     void insert(int element) {
         heap.push_back(element);
         heapifyUp(heap.size() - 1);
     }
 
-    // Extract the maximum element from the max heap
     int extractMax() {
         if (heap.empty()) {
-           cout<<"Heap is empty";
+           cout << "Heap is empty" << endl;
+           return -1; // 
         }
         int maxElement = heap[0];
         heap[0] = heap.back();
@@ -58,10 +55,10 @@ public:
         return maxElement;
     }
 
-    // Extract the minimum element from the max heap
     int extractMin() {
         if (heap.empty()) {
-            cout<<"Heap is empty";
+            cout << "Heap is empty" << endl;
+            return -1; // 
         }
         int minElement = heap[0];
         for (int i = 1; i < heap.size(); i++) {
@@ -71,7 +68,6 @@ public:
         return minElement;
     }
 
-    // Display the heap elements
     void display() {
         for (int val : heap) {
             cout << val << " ";
@@ -79,8 +75,6 @@ public:
         cout << endl;
     }
 };
-
-
 // member 2 ->
 // Use the heap implementation (from step 1) to build a priority queue.
 // Define methods for inserting an element with a priority and extracting the highest priority element.
