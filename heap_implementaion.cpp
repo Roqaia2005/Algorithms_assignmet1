@@ -4,6 +4,7 @@ using namespace std;
 class Heap {
 private:
     vector<int> heap;
+    public:
 
     void maxHeapify(int index) {
         int largest = index;
@@ -28,66 +29,7 @@ private:
             heapifyUp((index - 1) / 2);
         }
     }
-
-public:
-    void insert(int element) {
-        heap.push_back(element);
-        heapifyUp(heap.size() - 1);
-    }
-
-    int extractMax() {
-        if (heap.empty()) {
-           cout << "Heap is empty" << endl;
-           return -1; // 
-        }
-        int maxElement = heap[0];
-        heap[0] = heap.back();
-        heap.pop_back();
-        maxHeapify(0);
-        return maxElement;
-    }
-
-    int extractMin() {
-        if (heap.empty()) {
-            cout << "Heap is empty" << endl;
-            return -1; // 
-        }
-        int minElement = heap[0];
-        for (int i = 1; i < heap.size(); i++) {
-            if (heap[i] < minElement)
-                minElement = heap[i];
-        }
-        return minElement;
-    }
-
-    void display() {
-        for (int val : heap) {
-            cout << val << " ";
-        }
-        cout << endl;
-    }
-};
-class PriorityQueue {
-private:
-    Heap heap;
-
-public:
-    // Insert with priority
-    void insertWithPriority(int value) {
-        heap.insert(value);
-    }
-
-    // Extract the element with the highest priority (max in this case)
-    int extractHighestPriority() {
-        return heap.extractMax();
-    }
-
-   
-};
-
-
-
-void heapify(vector<int> &v, int n, int i)
+    void heapify(vector<int> &v, int n, int i)
 {
     int largest = i;
     int left = 2 * i + 1;
@@ -116,8 +58,9 @@ void BuildMaxHeap(vector<int> &v)
     }
 }
 
-void heapsort(vector<int> &v)
+void heapsort()
 {
+    vector<int>v;
     int n = v.size();
     BuildMaxHeap(v);
     for (int i = n-1; i >= 1; --i)
@@ -126,30 +69,89 @@ void heapsort(vector<int> &v)
         heapify(v, i, 0);
     }
 }
-int main() {
-    Heap heap;
+
+
+    void insert(int element) {
+        heap.push_back(element);
+        heapifyUp(heap.size() - 1);
+    }
+
+    int extractMax() {
+        if (heap.empty()) {
+           cout << "Heap is empty" << endl;
+           return -1; 
+        }
+        int maxElement = heap[0];
+        heap[0] = heap.back();
+        heap.pop_back();
+        maxHeapify(0);
+        return maxElement;
+    }
+
+    int extractMin() {
+        if (heap.empty()) {
+            cout << "Heap is empty" << endl;
+            return -1; 
+        }
+        int minElement = heap[0];
+        for (int i = 1; i < heap.size(); i++) {
+            if (heap[i] < minElement)
+                minElement = heap[i];
+        }
+        return minElement;
+    }
+
+    void display() {
+        for (int val : heap) {
+            cout << val << " ";
+        }
+        cout << endl;
+    }
+};
+class PriorityQueue:Heap {
+private:
+    vector<pair<int,int>>pq;
+
+public:
+   
+    void insert(int value,int priority) {
+        pq.push_back(make_pair(priority, value));
+        heapifyUp(pq.size() - 1);
+        
+    }
+
+    
+    int extractHighestPriority() {
+        return Heap:: extractMax();
+    }
+  
+
+   
+};
+
+int main(){
+    Heap h;
+    h.insert(1);
+    h.insert(4);
+    h.insert(2);
+    h.insert(5);
+
+    h.display();
+
+    h.heapsort();
+    h.display();
+
     PriorityQueue pq;
-    pq.insertWithPriority(20);
-    pq.insertWithPriority(30);
-    pq.insertWithPriority(40);
-    pq.insertWithPriority(50);
 
-    cout<<pq.extractHighestPriority()<<endl;
+    pq.insert(5, 1);
+    pq.insert(4, 2);
+    pq.insert(2, 0);
+    pq.insert(6, 4);
+    pq.insert(1, 3);
 
-    heap.insert(10);
-    heap.insert(20);
-    heap.insert(15);
-    heap.insert(30);
-    heap.insert(40);
-
-  cout << "Heap elements: ";
-    heap.display();
-
-   cout << "Extracted Max: " << heap.extractMax() << endl;
-   cout << "Heap after extracting max: ";
-    heap.display();
-
-  cout << "Minimum element in the heap: " << heap.extractMin() << endl;
-
-    return 0;
+   cout<< pq.extractHighestPriority();
 }
+
+
+
+
